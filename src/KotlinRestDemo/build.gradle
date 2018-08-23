@@ -10,11 +10,14 @@ buildscript {
     
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlin_version"
     }
 }
 
 apply plugin: 'kotlin'
 apply plugin: 'application'
+apply plugin: "kotlin-jpa"
+apply plugin: "kotlin-noarg"
 
 group 'com.felixreichel.kotlinrestdemo'
 version '0.0.1-SNAPSHOT'
@@ -44,6 +47,10 @@ dependencies {
     compile "io.ktor:ktor-gson:$ktor_version"
     compile "io.ktor:ktor-locations:$ktor_version"
     compile "org.kodein.di:kodein-di-generic-jvm:5.2.0"
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.5.Final'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.3.5.Final'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
+    testCompile group: 'org.hibernate', name: 'hibernate-testing', version: '5.3.5.Final'
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
     testCompile "io.ktor:ktor-server-core:$ktor_version"
     testCompile "io.ktor:ktor-server-host-common:$ktor_version"
